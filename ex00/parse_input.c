@@ -6,14 +6,14 @@
 /*   By: lmontes- <lmontes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:14:51 by lmontes-          #+#    #+#             */
-/*   Updated: 2022/07/16 20:40:39 by lmontes-         ###   ########.fr       */
+/*   Updated: 2022/07/17 00:43:55 by karce-ve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 
-int	parse_input(char *argv, int *input_size)
+char	*parse_input(char *argv, int *input_size)
 {
 	int	i;
 	int valid;
@@ -46,7 +46,7 @@ int	parse_input(char *argv, int *input_size)
 		n++;
 		i = i + 2;
 	}
-	return (*parsed_input); //devolvemos el puntero al nuevo array
+	return (parsed_input); //devolvemos el puntero al nuevo array
 }
 /*
 int    main(int argc, char *argv[])

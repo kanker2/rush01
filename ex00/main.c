@@ -1,12 +1,17 @@
 #include <stdlib.h>
+#include <unistd.h>
+#include "parse_input.h"
+#include "print_matrix.h"
 
 void init_matrix(char **matrix, char *user_input, int dim);
+void free_matrix(char **matrix, int dim);
 
 int	main(int argc, char *argv[])
 {
 	char	**matrix;
 	char	*user_input;
 	int		dim;
+
 	user_input = parse_input(argv[1], &dim);
 	if (user_input == 0)
 	{
@@ -15,7 +20,7 @@ int	main(int argc, char *argv[])
 	}
 	init_matrix(matrix, user_input, dim);
 	if(logica_del_programa(matrix, 0, 0, dim))
-		mostrar(matrix, dim);
+		print_matrix(matrix, dim);
 	else
 		write(1, "Error\n", 6);
 
@@ -32,6 +37,20 @@ void init_matrix(char **matrix, char *user_input, int dim)
 	while(i < dim)
 	{
 		matrix[i] = malloc(dim);
+		i++;
+	}
+
+}
+
+void free_matrix(char **matrix, int dim)
+{
+	int i;
+
+	i = 0;
+	free(matrix[dim]);
+	while(i < dim)
+	{
+		free(matrix[i]);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: karce-ve <karce-ve@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:54:54 by karce-ve          #+#    #+#             */
-/*   Updated: 2022/07/16 19:00:16 by karce-ve         ###   ########.fr       */
+/*   Updated: 2022/07/17 01:33:10 by karce-ve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	user_input_check(char **m, char *user_input, int dim)
 	return (t && d && l && r);
 }
 
-int	aux(char **matrix, int i, int j, int dim)
+int	do_all(char **matrix, int i, int j, int dim)
 {
 	int	char_to_try;
 	int	have_solution;
@@ -54,15 +54,15 @@ int	aux(char **matrix, int i, int j, int dim)
 	if (i == dim)
 		return (user_input_check(matrix, matrix[dim], dim));
 	else if (matrix[i][j] != '0')
-		return (aux(matrix, i + row_sum, (j + 1) % dim, dim));
+		return (do_all(matrix, i + row_sum, (j + 1) % dim, dim));
 	have_solution = 0;
-  	char_to_try = 1;
+	char_to_try = 1;
 	while (!have_solution && char_to_try <= dim)
 	{
 		matrix[i][j] = '0' + char_to_try;
 		if (check_row_col(matrix, i, j, dim))
-			have_solution = aux(matrix, i + row_sum, (j + 1) % dim, dim);
-		else
+			have_solution = do_all(matrix, i + row_sum, (j + 1) % dim, dim);
+		if (!have_solution)
 			matrix[i][j] = '0';
 		char_to_try++;
 	}

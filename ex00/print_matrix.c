@@ -6,7 +6,7 @@
 /*   By: lmontes- <lmontes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 13:52:16 by lmontes-          #+#    #+#             */
-/*   Updated: 2022/07/16 17:29:18 by lmontes-         ###   ########.fr       */
+/*   Updated: 2022/07/17 00:51:49 by karce-ve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	print_matrix(char **matrix, int dim)
 		while (j < dim)
 		{
 			write(1, &(matrix[i][j]), 1);
-			write(1, " ", 1);
+			if (j < dim - 1)
+				write(1, " ", 1);
 			j++;
 		}
 		write(1, "\n", 1);
