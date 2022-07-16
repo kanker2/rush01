@@ -1,8 +1,11 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 int comprobar(char **m, int i, int j, int dim)
 {
 	int row;
 	int col;
-
+	printf("Comprobando:\nrow - %d ; col : %d --> %c\n", i, j, m[i][j]);
 	row = 0;
 	while (row < dim && (row == i || m[row][j] != m[i][j]))
 		row++;
@@ -32,14 +35,16 @@ int	aux(char **matrix, int i, int j, int dim)
 	{
 		matrix[i][j] = '0' + char_to_try;
 		if(comprobar(matrix, i, j, dim))
+		{
+			printf("----DECIDIDO:-----------------------------\nrow - %d ; col : %d --> %c\n^^^^^^^^^^^^^^^^^^^^^^\n", i, j, matrix[i][j]);
 			have_solution = aux(matrix, i + row_sum, (j + 1) % dim, dim);
+		}
+		else
+			matrix[i][j] = '0';
 		char_to_try++;
 	}
 	return (have_solution);
 }
-
-#include <stdio.h>
-#include <stdlib.h>
 
 void mostrar(char **m, int dim)
 {
@@ -52,7 +57,7 @@ void mostrar(char **m, int dim)
 
 int main()
 {
-	int size = 4;
+	int size =8;
 	char **m = malloc(sizeof(char*) * size);
 	int i = 0;
 	while (i < size)
@@ -74,6 +79,7 @@ int main()
 		}
 		i++;
 	}
+	mostrar(m, size);
 	aux(m, 0, 0, size);
 	mostrar(m, size);
 }
