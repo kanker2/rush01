@@ -57,7 +57,7 @@ void mostrar(char **m, int dim)
 
 int main()
 {
-	int size = 6;
+	int size = 4;
 	char **m = malloc(sizeof(char*) * size);
 	int i = 0;
 	while (i < size)
