@@ -1,31 +1,37 @@
 #include <stdlib.h>
 
-int valid_args(int argc, char *argv[]);
-int just_valid_numbers(char *str);
+void init_matrix(char **matrix, char *user_input, int dim);
 
 int	main(int argc, char *argv[])
 {
-	if(valid_args(argc, argv))
-}
-
-int	valid_args(int argc, char *argv[])
-{
-	if (argc != 2)
-		return 0;
-	if (!just_valid_numbers(argv[1]))
-}
-
-int	just_valid_numbers(char *str)
-{
-	int last_is_num;
-
-	last_is_num = 0;
-	while (*str != '\0')
+	char	**matrix;
+	char	*user_input;
+	int		dim;
+	user_input = parse_input(argv[1], &dim);
+	if (user_input == 0)
 	{
-		if ('0' <= *str && *str <= '9')
-		{
-			if (last_is_num
-		}
-		str++;
+		write(1, "Error\n", 6);
+		return (0);
+	}
+	init_matrix(matrix, user_input, dim);
+	if(logica_del_programa(matrix, 0, 0, dim))
+		mostrar(matrix, dim);
+	else
+		write(1, "Error\n", 6);
+
+	free_matrix(matrix, dim);
+}
+
+void init_matrix(char **matrix, char *user_input, int dim)
+{
+	int i;
+
+	matrix = malloc((sizeof(char*)) * (dim + 1));
+	matrix[dim] = user_input;
+	i = 0;
+	while(i < dim)
+	{
+		matrix[i] = malloc(dim);
+		i++;
 	}
 }
