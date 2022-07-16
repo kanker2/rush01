@@ -6,7 +6,7 @@
 /*   By: karce-ve <karce-ve@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:54:54 by karce-ve          #+#    #+#             */
-/*   Updated: 2022/07/16 18:44:25 by karce-ve         ###   ########.fr       */
+/*   Updated: 2022/07/16 19:00:16 by karce-ve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	aux(char **matrix, int i, int j, int dim)
 	else
 		row_sum = 0;
 	if (i == dim)
-		return (user_input_check(matrix, , dim));
+		return (user_input_check(matrix, matrix[dim], dim));
 	else if (matrix[i][j] != '0')
 		return (aux(matrix, i + row_sum, (j + 1) % dim, dim));
 	have_solution = 0;
