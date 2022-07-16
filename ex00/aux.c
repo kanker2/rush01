@@ -16,28 +16,23 @@ int	aux(char **matrix, int i, int j, int dim)
 {
 	int	char_to_try;
 	int have_solution;
+	int row_sum;
 	
+	if(j == dim - 1)
+		row_sum = 1;
+	else
+		row_sum = 0;
 	if(i == dim)
 		return (1);
 	else if(matrix[i][j] != '0')
-	{
-		if(j == dim - 1)
-			return aux(matrix, i + 1, 0, dim);
-		else
-			return aux(matrix, i, j + 1, dim);
-	}
+		return aux(matrix, i + row_sum, (j + 1) % dim, dim);
 	have_solution = 0;
   	char_to_try = 1;
 	while(!have_solution && char_to_try <= dim)
 	{
 		matrix[i][j] = '0' + char_to_try;
 		if(comprobar(matrix, i, j, dim))
-		{
-			if(j == dim - 1)
-				have_solution = aux(matrix, i + 1, 0, dim);
-			else
-				have_solution = aux(matrix, i, j + 1, dim);
-		}
+			have_solution = aux(matrix, i + row_sum, (j + 1) % dim, dim);
 		char_to_try++;
 	}
 	return (have_solution);
