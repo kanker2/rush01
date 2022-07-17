@@ -6,12 +6,13 @@
 /*   By: lmontes- <lmontes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:14:51 by lmontes-          #+#    #+#             */
-/*   Updated: 2022/07/17 00:43:55 by karce-ve         ###   ########.fr       */
+/*   Updated: 2022/07/17 02:22:21 by karce-ve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 char	*parse_input(char *argv, int *input_size)
 {
@@ -19,7 +20,7 @@ char	*parse_input(char *argv, int *input_size)
 	int valid;
 	int n;
 	char *parsed_input;
-
+	
 	i = 0;
 	n = 0;
 	valid = 1;
@@ -27,7 +28,7 @@ char	*parse_input(char *argv, int *input_size)
 	{
 		if(i%2==0)
 		{
-			valid = ('1' <= argv[i] && argv[i] <= 9); // comprueba que las posiciones pares son números
+			valid = ('1' <= argv[i] && argv[i] <= '9'); // comprueba que las posiciones pares son números
 			n++; //aumenta el contador de números
 		}
 		else
@@ -42,6 +43,7 @@ char	*parse_input(char *argv, int *input_size)
 	n = 0;
 	while (argv[i] != '\0') 
 	{
+		write(1, argv + i, 1);
 		parsed_input[n] = argv[i]; //escribimos los números, en posiciones pares, en el nuevo array, que devolvemos
 		n++;
 		i = i + 2;

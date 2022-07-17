@@ -6,10 +6,10 @@
 /*   By: karce-ve <karce-ve@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:41:03 by karce-ve          #+#    #+#             */
-/*   Updated: 2022/07/16 19:23:38 by karce-ve         ###   ########.fr       */
+/*   Updated: 2022/07/17 01:57:16 by karce-ve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <stdlib.h>
 int	check_blocks_seen(int n_to_see, int nums[], int size)
 {
 	int	n_blocks_seen;
@@ -29,23 +29,6 @@ int	check_blocks_seen(int n_to_see, int nums[], int size)
 		i++;
 	}
 	return (n_blocks_seen == n_to_see);
-}
-
-#include <stdlib.h>
-#include <stdio.h>
-
-int main()
-{
-	int nums[] = {1, 3, 2};
-	int n_to_see = 2;
-	int dim = 3;
-
-	for(int i = 0; i < dim; i++)
-		printf("%d, ", nums[i]);
-	if(check_blocks_seen(n_to_see, nums, dim))
-		printf("VAAAAAAA!!!\n");
-	else
-		printf("no va :(\n");
 }
 
 int	top_check(char **m, char *user_input, int dim)
