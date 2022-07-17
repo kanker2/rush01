@@ -6,7 +6,7 @@
 /*   By: lmontes- <lmontes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:14:51 by lmontes-          #+#    #+#             */
-/*   Updated: 2022/07/17 10:40:33 by karce-ve         ###   ########.fr       */
+/*   Updated: 2022/07/17 13:13:58 by lmontes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	is_num(char c)
 {
-	return ('0' <= c && c <= '9');
+	return ('1' <= c && c <= '9');
 }
 
 char	*trim(char *str, int dim)
