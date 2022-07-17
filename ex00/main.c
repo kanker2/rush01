@@ -8,15 +8,22 @@
 //Quitar:
 #include <stdio.h>
 
-void init_matrix(char ***matrix, char *user_input, int dim);
+char	**init_matrix(char *user_input, int dim);
 void free_matrix(char **matrix, int dim);
 int check_input(int argc);
+
+void leaks()
+{
+	system("leaks a.out");
+}
 
 int	main(int argc, char *argv[])
 {
 	char	**matrix;
 	char	*user_input;
 	int		dim;
+
+	atexit(leaks);
 	if(!check_input(argc))
 	{
 		write(1, "Error\n", 6);
@@ -28,7 +35,12 @@ int	main(int argc, char *argv[])
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	init_matrix(&matrix, user_input, dim);
+	matrix = init_matrix(user_input, dim);
+	if(!matrix)
+	{
+		free_matrix(matrix, dim);
+		return (0);
+	}
 	if(solve(matrix, 0, 0, dim))
 		print_matrix(matrix, dim);
 	else
@@ -44,18 +56,21 @@ int check_input(int argc)
 	return (1);
 }
 
-void init_matrix(char ***matrix, char *user_input, int dim)
+char	**init_matrix(char *user_input, int dim)
 {
-	int i;
-	*matrix = malloc((sizeof(char*)) * (dim + 1));
-	(*matrix)[dim] = user_input;
+	int 	i;
+	char	**matrix;
+
+	matrix = malloc(sizeof(char*) * (dim + 1));
+	matrix[dim] = user_input;
 	i = 0;
 	while(i < dim)
 	{
-		(*matrix)[i] = malloc(dim);
+		matrix[i] = malloc(dim);
 		i++;
 	}
-	reset_pos(*matrix, dim);
+	reset_pos(matrix, dim);
+	return matrix;
 }
 
 void free_matrix(char **matrix, int dim)
@@ -69,4 +84,5 @@ void free_matrix(char **matrix, int dim)
 		free(matrix[i]);
 		i++;
 	}
+	free(matrix);
 }
