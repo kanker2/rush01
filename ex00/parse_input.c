@@ -6,13 +6,12 @@
 /*   By: lmontes- <lmontes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:14:51 by lmontes-          #+#    #+#             */
-/*   Updated: 2022/07/17 13:13:58 by lmontes-         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:04:17 by lmontes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 int	is_num(char c)
 {

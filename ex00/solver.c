@@ -6,11 +6,10 @@
 /*   By: karce-ve <karce-ve@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:54:54 by karce-ve          #+#    #+#             */
-/*   Updated: 2022/07/17 10:26:17 by karce-ve         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:06:05 by lmontes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "check_blocks.h"
 
