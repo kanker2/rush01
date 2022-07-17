@@ -6,7 +6,7 @@
 /*   By: lmontes- <lmontes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:14:51 by lmontes-          #+#    #+#             */
-/*   Updated: 2022/07/17 02:22:21 by karce-ve         ###   ########.fr       */
+/*   Updated: 2022/07/17 02:50:58 by karce-ve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,52 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char	*parse_input(char *argv, int *input_size)
+int	is_num(char c)
 {
-	int	i;
-	int valid;
-	int n;
-	char *parsed_input;
-	
+	return '0' <= c && c <= '9';
+}
+
+char	*trim(char *str, int dim)
+{
+	int		i;
+	int		n_nums;
+	char	*nums;
+
 	i = 0;
-	n = 0;
-	valid = 1;
-	while (valid == 1  && argv[i] != '\0') //recorro el array inicial del parámetro de usuario
+	n_nums = 0;
+	nums = malloc(dim);
+	while (str[i] != '\0')
 	{
-		if(i%2==0)
-		{
-			valid = ('1' <= argv[i] && argv[i] <= '9'); // comprueba que las posiciones pares son números
-			n++; //aumenta el contador de números
-		}
-		else
-			valid = (argv[i] = ' '); // comprueba posiciones  impares sean espacios
+		if(is_num(str[i]))
+			nums[n_nums++] = str[i];
 		i++;
 	}
-	if (!valid)
-	   return (0);	
-	*input_size = n;
-    parsed_input = malloc(n);
-	i = 0; //reiniciamos contadores
-	n = 0;
-	while (argv[i] != '\0') 
-	{
-		write(1, argv + i, 1);
-		parsed_input[n] = argv[i]; //escribimos los números, en posiciones pares, en el nuevo array, que devolvemos
-		n++;
-		i = i + 2;
-	}
-	return (parsed_input); //devolvemos el puntero al nuevo array
+	return nums;
 }
-/*
-int    main(int argc, char *argv[])
-{
-	int size;
 
-    size = 0;
-	parse_input(*argv, &size);
+char	*parse_input(char *usr_input, int *dim_of_matrix)
+{
+	int	i;
+	int n_nums;
+	int valido;
+
+	i = 0;
+	n_nums = 0;
+	valido = 1;
+	*dim_of_matrix = 0;
+	while (usr_input[i] != '\0' && valido)
+	{
+		valido = is_num(usr_input[i++]);
+		if (valido)
+			n_nums++;
+		valido = valido && (usr_input[i] == '\0' || usr_input[i++] == ' ');
+	}
+	valido = valido && 0 == n_nums % 4;
+	if (valido)
+	{
+		*dim_of_matrix = n_nums / 4;
+		return (trim(usr_input, *dim_of_matrix));
+	}
+	else
+		return (0);
 }
-*/

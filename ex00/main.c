@@ -27,7 +27,7 @@ int	main(int argc, char *argv[])
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	//printf("Despues de init guay user_input: %s, n: %d\n", user_input, dim);
+	printf("Despues de init guay user_input: %s, n: %d\n", user_input, dim);
 	init_matrix(&matrix, user_input, dim);
 	if(solve(matrix, 0, 0, dim))
 		print_matrix(matrix, dim);
