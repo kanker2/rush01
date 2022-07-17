@@ -6,10 +6,11 @@
 /*   By: karce-ve <karce-ve@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:41:03 by karce-ve          #+#    #+#             */
-/*   Updated: 2022/07/17 04:33:38 by karce-ve         ###   ########.fr       */
+/*   Updated: 2022/07/17 09:40:09 by karce-ve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
+
 int	check_blocks_seen(int n_to_see, int nums[], int size)
 {
 	int	n_blocks_seen;

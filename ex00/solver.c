@@ -6,16 +6,13 @@
 /*   By: karce-ve <karce-ve@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:54:54 by karce-ve          #+#    #+#             */
-/*   Updated: 2022/07/17 04:34:01 by karce-ve         ###   ########.fr       */
+/*   Updated: 2022/07/17 09:51:59 by karce-ve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "check_blocks.h"
-
-//QUITAR
-#include "print_matrix.h"
 
 int	check_row_col(char **m, int i, int j, int dim)
 {
@@ -31,8 +28,6 @@ int	check_row_col(char **m, int i, int j, int dim)
 	return (col == dim && row == dim);
 }
 
-#include <stdio.h>
-
 int	user_input_check(char **m, char *user_input, int dim)
 {
 	int	t;
@@ -43,7 +38,7 @@ int	user_input_check(char **m, char *user_input, int dim)
 	t = top_check(m, user_input, dim);
 	d = down_check(m, user_input, dim);
 	l = left_check(m, user_input, dim);
-	r = right_check(m, user_input, dim);	
+	r = right_check(m, user_input, dim);
 	return (t && d && l && r);
 }
 
