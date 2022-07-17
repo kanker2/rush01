@@ -6,7 +6,7 @@
 /*   By: karce-ve <karce-ve@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:41:03 by karce-ve          #+#    #+#             */
-/*   Updated: 2022/07/17 01:57:16 by karce-ve         ###   ########.fr       */
+/*   Updated: 2022/07/17 04:33:38 by karce-ve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -48,7 +48,7 @@ int	top_check(char **m, char *user_input, int dim)
 		j = 0;
 		while (j < dim)
 		{
-			n[j] = m[j][i];
+			n[j] = m[j][i % dim];
 			j++;
 		}
 		valid = check_blocks_seen(user_n, n, dim);
@@ -75,7 +75,7 @@ int	down_check(char **m, char *user_input, int dim)
 		j = 0;
 		while (j < dim)
 		{
-			n[j] = m[dim - 1 - j][i];
+			n[j] = m[dim - 1 - j][i % dim];
 			j++;
 		}
 		valid = check_blocks_seen(user_n, n, dim);
@@ -102,7 +102,7 @@ int	left_check(char **m, char *user_input, int dim)
 		j = 0;
 		while (j < dim)
 		{
-			n[j] = m[i][j];
+			n[j] = m[i % dim][j];
 			j++;
 		}
 		valid = check_blocks_seen(user_n, n, dim);
@@ -129,7 +129,7 @@ int	right_check(char **m, char *user_input, int dim)
 		j = 0;
 		while (j < dim)
 		{
-			n[j] = m[i][dim - 1 - j];
+			n[j] = m[i % dim][dim - 1 - j];
 			j++;
 		}
 		valid = check_blocks_seen(user_n, n, dim);

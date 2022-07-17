@@ -3,6 +3,7 @@
 #include "parse_input.h"
 #include "print_matrix.h"
 #include "solver.h"
+#include "reset_pos.h"
 
 //Quitar:
 #include <stdio.h>
@@ -27,7 +28,6 @@ int	main(int argc, char *argv[])
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	printf("Despues de init guay user_input: %s, n: %d\n", user_input, dim);
 	init_matrix(&matrix, user_input, dim);
 	if(solve(matrix, 0, 0, dim))
 		print_matrix(matrix, dim);
@@ -47,15 +47,15 @@ int check_input(int argc)
 void init_matrix(char ***matrix, char *user_input, int dim)
 {
 	int i;
-
 	*matrix = malloc((sizeof(char*)) * (dim + 1));
-	*matrix[dim] = user_input;
+	(*matrix)[dim] = user_input;
 	i = 0;
 	while(i < dim)
 	{
-		*matrix[i] = malloc(dim);
+		(*matrix)[i] = malloc(dim);
 		i++;
 	}
+	reset_pos(*matrix, dim);
 }
 
 void free_matrix(char **matrix, int dim)

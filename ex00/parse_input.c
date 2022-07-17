@@ -6,7 +6,7 @@
 /*   By: lmontes- <lmontes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:14:51 by lmontes-          #+#    #+#             */
-/*   Updated: 2022/07/17 02:50:58 by karce-ve         ###   ########.fr       */
+/*   Updated: 2022/07/17 02:57:28 by karce-ve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	is_num(char c)
 {
-	return '0' <= c && c <= '9';
+	return ('0' <= c && c <= '9');
 }
 
 char	*trim(char *str, int dim)
@@ -30,18 +30,18 @@ char	*trim(char *str, int dim)
 	nums = malloc(dim);
 	while (str[i] != '\0')
 	{
-		if(is_num(str[i]))
+		if (is_num(str[i]))
 			nums[n_nums++] = str[i];
 		i++;
 	}
-	return nums;
+	return (nums);
 }
 
 char	*parse_input(char *usr_input, int *dim_of_matrix)
 {
 	int	i;
-	int n_nums;
-	int valido;
+	int	n_nums;
+	int	valido;
 
 	i = 0;
 	n_nums = 0;
@@ -52,9 +52,9 @@ char	*parse_input(char *usr_input, int *dim_of_matrix)
 		valido = is_num(usr_input[i++]);
 		if (valido)
 			n_nums++;
-		valido = valido && (usr_input[i] == '\0' || usr_input[i++] == ' ');
+		valido = (valido && (usr_input[i] == '\0' || usr_input[i++] == ' '));
 	}
-	valido = valido && 0 == n_nums % 4;
+	valido = (valido && 0 == n_nums % 4);
 	if (valido)
 	{
 		*dim_of_matrix = n_nums / 4;
