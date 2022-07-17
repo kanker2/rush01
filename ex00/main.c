@@ -6,7 +6,7 @@
 /*   By: karce-ve <karce-ve@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 09:41:29 by karce-ve          #+#    #+#             */
-/*   Updated: 2022/07/17 10:01:01 by karce-ve         ###   ########.fr       */
+/*   Updated: 2022/07/17 10:37:59 by karce-ve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "print_matrix.h"
 #include "solver.h"
 #include "reset_pos.h"
-
+#include <stdio.h>
 char	**init_matrix(char *user_input, int dim);
 void	free_matrix(char **matrix, int dim);
 int		check_input(int argc);
@@ -28,6 +28,7 @@ int	main(int argc, char *argv[])
 	int		dim;
 
 	user_input = parse_input(argv[1], &dim);
+	printf("%s\n", user_input);
 	if (argc != 2 || user_input == 0)
 	{
 		write(1, "Error\n", 6);

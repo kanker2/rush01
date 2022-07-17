@@ -6,7 +6,7 @@
 /*   By: karce-ve <karce-ve@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:54:54 by karce-ve          #+#    #+#             */
-/*   Updated: 2022/07/17 09:51:59 by karce-ve         ###   ########.fr       */
+/*   Updated: 2022/07/17 10:26:17 by karce-ve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,41 +69,3 @@ int	solve(char **matrix, int i, int j, int dim)
 	}
 	return (have_solution);
 }
-
-//void mostrar(char **m, int dim)
-//{
-//	for(int i = 0; i < dim; i++){
-//		for(int j = 0; j < dim; j++)
-//			printf("%c ", m[i][j]);
-//		printf("\n");
-//	}
-//}
-//
-//int main()
-//{
-//	int size =8;
-//	char **m = malloc(sizeof(char*) * size);
-//	int i = 0;
-//	while (i < size)
-//	{
-//		m[i] = malloc(size);
-//		i++;
-//	}
-//
-//	int j;
-//	i = 0;
-//
-//	while(i < size)
-//	{
-//		j = 0;
-//		while(j < size)
-//		{
-//			m[i][j] = '0';
-//			j++;
-//		}
-//		i++;
-//	}
-//	mostrar(m, size);
-//	aux(m, 0, 0, size);
-//	mostrar(m, size);
-//}
